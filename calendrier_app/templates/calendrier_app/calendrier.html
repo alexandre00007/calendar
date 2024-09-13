@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calendrier</title>
+    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.css' rel='stylesheet' />
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.js'></script>
+    <script src='https://cdn.jsdelivr.net/npm/@fullcalendar/core@5.11.0/locales/fr.js'></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                locale: 'fr',
+                events: '/api/presences/',
+                eventClick: function(info) {
+                    window.location.href = '/presence/' + info.event.id + '/';
+                }
+            });
+            calendar.render();
+        });
+    </script>
+</head>
+<body>
+    <h1>Calendrier des Présences</h1>
+    <div id='calendar'></div>
+</body>
+</html>
